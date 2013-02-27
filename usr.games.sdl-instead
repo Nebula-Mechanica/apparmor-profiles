@@ -1,0 +1,24 @@
+# AppArmor policy for sdl-instead
+# Falcon Peregrinus
+# Public Domain
+# It's a profile for instead game
+
+#include <tunables/global>
+
+# No template variables specified
+
+/usr/games/sdl-instead {
+  #include <abstractions/base>
+  #include <abstractions/audio>
+  #include <abstractions/nameservice>
+  #include <abstractions/gnome>
+  owner @{HOME}/.instead/{,**} rwk,
+  owner @{HOME}/.Xauthority r,
+  /usr/share/games/instead/{,**} r,
+  /usr/share/themes/{,**} r,
+  /usr/share/icons/{,**} r,
+  /usr/share/mime/{,**} r,
+  /usr/lib/{,**} rm,
+  /usr/share/pixmaps/{,**} r,
+  /etc/timidity/{,**} r,
+}

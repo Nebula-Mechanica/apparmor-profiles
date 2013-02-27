@@ -1,0 +1,27 @@
+# AppArmor policy for instead-launcher
+# Falcon Peregrinus
+# Public Domain
+# It's a profile for instead-launcher
+
+#include <tunables/global>
+
+# No template variables specified
+
+/usr/bin/instead-launcher {
+  #include <abstractions/base>
+  #include <abstractions/audio>
+  #include <abstractions/nameservice>
+  #include <abstractions/gnome>
+  /usr/games/sdl-instead ix,
+  owner @{HOME}/.instead/{,**} rwk,
+  owner @{HOME}/.config/Trolltech.conf rwk,
+  owner @{HOME}/.Xauthority r,
+  /usr/share/games/instead/{,**} r,
+  /usr/share/themes/{,**} r,
+  /usr/share/icons/{,**} r,
+  /usr/share/mime/{,**} r,
+  /usr/share/qt4/{,**} r,
+  /usr/lib/{,**} rm,
+  /usr/share/pixmaps/{,**} r,
+  /etc/timidity/{,**} r,
+}

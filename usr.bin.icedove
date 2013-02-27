@@ -1,0 +1,45 @@
+# Falcon Peregrinus
+# Public Domain
+# It's an icedove profile, partially rewritten for more cleaner style, taken somewhere from
+# gist.
+#include <tunables/global>
+
+/usr/lib/icedove/icedove-bin {
+  #include <abstractions/base>
+  #include <abstractions/fonts>
+  #include <abstractions/gnome>
+  #include <abstractions/nameservice>
+
+  /etc/icedove/{,**} r,
+  owner @{HOME}/.Xauthority r,
+  owner @{HOME}/.icedove/{,**} rwk,
+  owner @{HOME}/Downloads/{,**} rwk,
+  owner @{HOME}/.cache/event-sound-cache* rwk,
+  /proc/filesystems r,
+  /usr/lib/iceweasel/{,**} px,
+  /usr/lib/icedove/{,**} r,
+  /usr/share/hunspell/{,**} r,
+  /usr/share/icedove/{,**} r,
+  /usr/share/mozilla/{,**} r,
+  /usr/share/xul-ext/{,**} r,
+  /usr/share/myspell/{,**} r,
+  /usr/share/mime/{,**} r,
+
+  # Self-restarts.
+  /usr/lib/icedove/icedove-bin ix,
+
+  # Upgrade to icedove 3.0.4.
+
+  owner @{HOME}/.icedove/{,**} rwk,
+  owner @{HOME}/.mozilla/extensions/{,**} rwk,
+  owner @{HOME}/.local/share/icons/{,**} r,
+  owner @{HOME}/.esd_auth r,
+  /etc/{mime.types,mailcap,rpc,mtab} r,
+  /usr/share/hunspell/{,*} r,
+  /usr/bin/sensible-browser rix,
+
+  owner @{HOME}/.local/share/mime/* r,
+
+  # Generic plugins.
+  /usr/lib/nspluginwrapper/plugins/*.so rm,
+}

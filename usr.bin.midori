@@ -1,0 +1,71 @@
+# Falcon Peregrinus
+# Public Domain
+# It's a midori profile, many things changed. Original may be found in launchpad
+# bugreports to apparmor-profiles repo.
+
+#include <tunables/global>
+
+/usr/bin/midori {
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/cups-client>
+  #include <abstractions/dbus-session>
+  #include <abstractions/gnome>
+  #include <abstractions/nameservice>
+
+  # for networking
+  network inet stream,
+  network inet6 stream,
+
+  # Reading etc files
+  /etc/ r,
+  /etc/mailcap r,
+  /etc/mime.types r,
+  /etc/ssl/** r,
+  /etc/timezone r,
+  /etc/udev/udev.conf r,
+  /etc/wildmidi/wildmidi.cfg r,
+  /etc/xdg/midori/** r,
+
+  # Home files
+  owner @{HOME}/.Xauthority r,
+  owner @{HOME}/.cache/midori/{,**} wrk,
+  owner @{HOME}/.config/enchant/{,**} rwk,
+  owner @{HOME}/.config/midori/{,**} rwk,
+  owner @{HOME}/.config/user-dirs.dirs r,
+  owner @{HOME}/.gtk-bookmarks r,
+  owner @{HOME}/.gstreamer*/{,**} r,
+  owner @{HOME}/.gtkrc-2.0 r,
+  owner @{HOME}/.local/share/webkit/{,**} rwk,
+  owner @{HOME}/.local/share/applications/defaults.list r,
+  owner @{HOME}/.local/share/applications/mimeapps.list r,
+  owner @{HOME}/.local/share/applications/mimeinfo.cache r,
+  owner @{HOME}/Downloads/** rwk,
+  owner @{HOME}/Downloads/ r,
+
+  deny @{HOME}/.local/share/recently-used.xbel rwk,
+  # tmp files:
+  owner /tmp/** m,
+  /tmp/.X[0-9]*-lock r,
+  owner /var/tmp/** m,
+
+  # Other system files:
+  /usr/share/midori/{,**} r,
+  /usr/share/doc/midori/{,**} r,
+  /usr/share/libthai/thbrk.tri r,
+  /usr/share/webkitgtk-1.0/{,**} r,
+  /usr/bin/xdg-open ix,
+  /usr/bin/exo-open/usr/bin/exo-open ix,
+  /usr/bin/gnome-open ix,
+  /usr/lib{,32,64}/** mr,
+  /usr/share/enchant/{,**} r,
+  /usr/share/hunspell/{,**} r,
+  /usr/share/glib-2.0/{,**} r,
+  /usr/share/javascript/mootools/mootools-core.min.js r,
+  /usr/share/pkg-config-crosswrapper r,
+
+  # ?
+  @{PROC}/[0-9]*/net/if_inet6 r,
+  @{PROC}/[0-9]*/net/ipv6_route r,
+
+}
