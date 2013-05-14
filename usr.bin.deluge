@@ -1,0 +1,19 @@
+# Last Modified: Fri Apr 19 00:20:59 2013
+#include <tunables/global>
+
+/usr/bin/deluge{,-gtk} {
+  #include <abstractions/base>
+  #include <abstractions/python>
+  #include <abstractions/audio>
+  #include <abstractions/gnome>
+  #include <abstractions/dbus-session>
+  #include <abstractions/nameservice>
+
+  /usr/bin/deluge{,-gtk} ixr,
+  /usr/bin/python2.7 ix,
+  /usr/bin/{,**} r,
+  /usr/share/GeoIP/{,**} r,
+  owner @{HOME}/.config/deluge/{,**} rwk,
+  owner @{HOME}/Downloads/{,**} rwk,
+
+}
