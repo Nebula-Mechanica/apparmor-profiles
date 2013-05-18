@@ -109,6 +109,7 @@
   /usr/lib/{,**} r,
   /usr/share/iceweasel/{,**} r,
   /usr/share/mozilla/{,**} r,
+  /usr/share/glib-2.0/{,**} r,
   /usr/share/xulrunner{,-*}/{,**} r,
   /usr/share/mime/{,**} r,
   /usr/share/hunspell/{,**} r,
@@ -116,10 +117,11 @@
   # so browsing directories works
 
   # Default profile allows downloads to ~/Downloads and uploads from ~/Public
-  owner @{HOME}/Downloads/ r,
-  owner @{HOME}/Downloads/** rwk,
+  owner @{HOME}/Загрузки/ r,
+  owner @{HOME}/Загрузки/** rwk,
 
   # per-user iceweasel configuration
+  owner @{HOME}/.cache/{iceweasel,mozilla}/{,**} rw,
   owner @{HOME}/.{iceweasel,mozilla}/ rw,
   owner @{HOME}/.{iceweasel,mozilla}/** rw,
   owner @{HOME}/.{iceweasel,mozilla}/**/*.{db,parentlock,sqlite}* k,
