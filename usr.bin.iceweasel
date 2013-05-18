@@ -117,8 +117,8 @@
   # so browsing directories works
 
   # Default profile allows downloads to ~/Downloads and uploads from ~/Public
-  owner @{HOME}/Загрузки/ r,
-  owner @{HOME}/Загрузки/** rwk,
+  owner @{HOME}/Downloads/ r,
+  owner @{HOME}/Downloads/** rwk,
 
   # per-user iceweasel configuration
   owner @{HOME}/.cache/{iceweasel,mozilla}/{,**} rw,
