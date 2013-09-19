@@ -1,0 +1,21 @@
+# vim:syntax=apparmor
+# AppArmor policy for openttd
+
+#include <tunables/global>
+
+# No template variables specified
+
+"/usr/games/openttd" {
+  #include <abstractions/base>
+  #include <abstractions/audio>
+  #include <abstractions/nameservice>
+  #include <abstractions/fonts>
+  #include <abstractions/X>
+  /usr/share/games/openttd/{,**} r,
+  owner @{HOME}/.openttd/{,**} rwk,
+  /etc/timidity/{,**} r,
+  /usr/share/midi/{,**} r,
+  /usr/bin/timidity ix,
+
+}
+
