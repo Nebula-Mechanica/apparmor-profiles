@@ -15,6 +15,7 @@
 	#include <abstractions/bash>
 	#include <abstractions/consoles>
 	#include <abstractions/dbus>
+	#include <abstractions/dbus-session>
 	#include <abstractions/gnome>
 	#include <abstractions/nameservice>
 
@@ -27,8 +28,10 @@
 	deny @{HOME}/.zshrc rw,
 
 	owner @{HOME}/.config/enchant/ rw,
+	owner @{HOME}/Downloads/{,**} rw,
 	owner @{HOME}/.config/enchant/** rwk,
 	owner @{HOME}/.local/share/icons/ r,
+	owner @{HOME}/.icons/{,**} r,
 	owner @{HOME}/.local/share/mime/** r,
 	owner @{HOME}/.gstreamer*/ rw,
 	owner @{HOME}/.gstreamer*/** rw,
@@ -37,7 +40,9 @@
 	owner @{HOME}/.pulse-cookie rwk,
 	owner @{HOME}/.purple/ rw,
 	owner @{HOME}/.purple/** rwk,
-
+	owner /tmp/** m,
+	owner /var/tmp/** m,
+	/tmp/.X[0-9]*-lock r,
 	/bin/dash rix,
 
 	/{dev,run}/shm/ r,
