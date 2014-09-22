@@ -154,6 +154,12 @@
   /usr/bin/mkfifo Uxr,  # investigate
   /bin/ps Uxr,
   /bin/uname Uxr,
+  
+  # allows smooth fonts on kde:
+  @{HOME}/.kde/share/config/kdeglobals r,
+  @{HOME}/.config/qtcurve/gtk-icons r,
+  @{HOME}/.kde/share/config/gtkrc-2.0 r,
+  @{HOME}/.config/fontconfig/fonts.conf r,
 
   # Site-specific additions and overrides. See local/README for details.
 }
